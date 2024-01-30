@@ -1,0 +1,42 @@
+@import '../var.css';
+
+.wrapper {
+  --height: 2.5rem;
+  --width: 2.5rem;
+  --padding: 0.1rem;
+  position: fixed;
+  top: var(--height);
+  left: 0;
+
+  .btn {
+    position: relative;
+    background-color: var(--dark);
+    height: var(--height);
+    width: calc(var(--width) * 0.5);
+    transition: all 0.2s ease-out;
+    padding: var(--padding);
+    opacity: 1;
+
+    .btn_icon {
+      position: absolute;
+      top: 0;
+      right: 0;
+      transform: translateY(-50%);
+      transform: translateX(50%);
+      width: var(--width);
+      height: var(--height);
+      background-color: var(--dark);
+      color: var(--extra1);
+      border-radius: 50%;
+      padding: var(--padding);
+      transition: all 0.2s ease-out;
+    }
+    &.open {
+      width: calc(var(--width) * 1);
+      opacity: 1;
+      .btn_icon {
+        transform: translateX(50%) rotate(270deg);
+      }
+    }
+  }
+}
