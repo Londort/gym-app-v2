@@ -1,20 +1,48 @@
+import { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
 
+import LocalStorage from './handlers/LocalStorage';
 import WorkoutList from './components/WorkoutList';
 import Workout from './components/Workout';
 
 import './App.css';
 
 function App() {
+  const [workouts, setWorkouts] = useState([]);
+  useEffect(() => setWorkouts(LocalStorage.getWorkouts()), []);
+  const addWorkout = () => {
+    const workout = {
+      id: uuidv4(),
+      name: workouts.length + 1,
+    };
+    const updateWorkouts = [...workouts, workout];
+    LocalStorage.updateWorkouts(updateWorkouts);
+    setWorkouts(updateWorkouts);
+  };
+
   return (
-    <div className="App">
-      <BrowserRouter>
+    <BrowserRouter>
+      <div className="App">
         <Routes>
-          <Route path="/" element={<WorkoutList />} />
-          <Route path="/workout/:id" element={<Workout />} />
+          <Route
+            path="/"
+            element={
+              <WorkoutList workouts={workouts} addWorkout={addWorkout} />
+            }
+          />
+          {workouts.map((workout) => (
+            <Route
+              key={workout.id}
+              path={`/workout${workout.name}`}
+              element={<Workout workout={workout} />}
+            />
+          ))}
+
+          {/* <Route path="/workout/:name" element={<Workout />} /> */}
         </Routes>
-      </BrowserRouter>
-    </div>
+      </div>
+    </BrowserRouter>
   );
 }
 

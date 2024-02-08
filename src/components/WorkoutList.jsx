@@ -1,17 +1,18 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import { FaDumbbell } from 'react-icons/fa';
 import { IoMdAddCircleOutline } from 'react-icons/io';
-import LocalStorage from '../handlers/LocalStorage';
-import { v4 as uuidv4 } from 'uuid';
 
 import styles from './WorkoutList.module.css';
+// import Workout from './Workout';
 
-const WorkoutList = () => {
-  const [workouts, setWorkouts] = useState([]);
+const WorkoutList = (props) => {
+  const { workouts, addWorkout } = props;
+  // const [workouts, setWorkouts] = useState([]);
   const [isBtnActive, setIsBtnActive] = useState(false);
 
-  useEffect(() => setWorkouts(LocalStorage.getWorkouts()), []);
+  // useEffect(() => setWorkouts(LocalStorage.getWorkouts()), []);
 
   useEffect(() => {
     const handleClickOutsideBtn = (e) => {
@@ -43,15 +44,15 @@ const WorkoutList = () => {
     }
   };
 
-  const addWorkout = () => {
-    const workout = {
-      id: uuidv4(),
-      name: `Workout${workouts.length + 1}`,
-    };
-    const updateWorkouts = [...workouts, workout];
-    LocalStorage.updateWorkouts(updateWorkouts);
-    setWorkouts(updateWorkouts);
-  };
+  // const addWorkout = () => {
+  //   const workout = {
+  //     id: uuidv4(),
+  //     name: `Workout${workouts.length + 1}`,
+  //   };
+  //   const updateWorkouts = [...workouts, workout];
+  //   LocalStorage.updateWorkouts(updateWorkouts);
+  //   setWorkouts(updateWorkouts);
+  // };
 
   return (
     <section className={styles.container}>
@@ -76,12 +77,16 @@ const WorkoutList = () => {
         </div>
       )}
       {workouts.map((workout) => (
-        <div className={styles.item}>
+        <Link
+          key={workout.id}
+          to={`/workout${workout.name}`}
+          className={styles.item}
+        >
           <div>
             <FaDumbbell />
-            <span>{workout.name}</span>
+            <span>Workout {workout.name}</span>
           </div>
-        </div>
+        </Link>
       ))}
     </section>
   );
