@@ -7,4 +7,9 @@
 
   --font-family1: ;
   --font-family2: ;
+
+  --width: 2rem;
+  --height: var(--width);
+  --padding: calc(var(--width) * 0.1);
+  --box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.9);
 }

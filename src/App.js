@@ -10,15 +10,29 @@ import './App.css';
 
 function App() {
   const [workouts, setWorkouts] = useState([]);
+
   useEffect(() => setWorkouts(LocalStorage.getWorkouts()), []);
+
   const addWorkout = () => {
     const workout = {
       id: uuidv4(),
       name: workouts.length + 1,
+      exercises: [],
     };
     const updateWorkouts = [...workouts, workout];
     LocalStorage.updateWorkouts(updateWorkouts);
     setWorkouts(updateWorkouts);
+  };
+
+  const updateWorkout = (workout) => {
+    const newWorkouts = workouts.map((item) => {
+      if (workout.id === item.id) {
+        return workout;
+      }
+      return item;
+    });
+    LocalStorage.updateWorkouts(newWorkouts);
+    setWorkouts(newWorkouts);
   };
 
   return (
@@ -35,7 +49,9 @@ function App() {
             <Route
               key={workout.id}
               path={`/workout${workout.name}`}
-              element={<Workout workout={workout} />}
+              element={
+                <Workout workout={workout} updateWorkout={updateWorkout} />
+              }
             />
           ))}
 

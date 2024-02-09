@@ -5,12 +5,19 @@
   height: 100%;
   background-color: var(--light);
 
-  .btn {
-    --width: 2rem;
-    --height: var(--width);
-    --padding: calc(var(--width) * 0.1);
-    --box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.9);
+  .btn_wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--light);
+    transform: translateX(+100%);
+    opacity: 0.5;
+    z-index: 1;
+  }
 
+  .btn {
     position: fixed;
     top: var(--height);
     right: 0;
@@ -44,6 +51,52 @@
         height: 100%;
         transition: all 0.2s ease-out;
       }
+      .submenu {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        margin-top: calc(var(--height) / 2);
+        width: var(--width);
+        transform-origin: top;
+        opacity: 0;
+        transition: all 0.2s ease 0.2s;
+
+        .icon_wrap {
+          display: grid;
+          place-items: center;
+          font-size: 0.75rem;
+          font-weight: bold;
+          text-wrap: nowrap;
+          color: var(--dark);
+          text-transform: uppercase;
+        }
+        .backward_btn::before {
+          content: 'back';
+          position: absolute;
+          right: calc(100% + (var(--width) / 2));
+        }
+        .add_exercise::before {
+          content: 'add exercise';
+          position: absolute;
+          right: calc(100% + (var(--width) / 2));
+        }
+        .add_group::before {
+          content: 'add group';
+          position: absolute;
+          right: calc(100% + (var(--width) / 2));
+        }
+
+        .submenu_icon {
+          width: var(--width);
+          height: var(--height);
+          background-color: var(--dark);
+          color: var(--extra1);
+          border-radius: 50%;
+          padding: var(--padding);
+        }
+      }
     }
     &.open {
       width: calc(var(--width) * 1);
@@ -53,25 +106,14 @@
       .btn_icon {
         z-index: 2;
         .icon {
-          transform: translateX(00%) rotate(270deg);
-        }
-        &::after {
-          content: 'add workout';
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, 450%) rotate(90deg);
-          line-height: 1rem;
-          font-size: 0.75rem;
-          font-weight: 600;
-          letter-spacing: 0.1rem;
-          color: var(--dark);
-          text-transform: uppercase;
-          text-wrap: nowrap;
+          transform: translateX(00%) rotate(-270deg);
         }
       }
       & + .btn_wrapper {
         transform: translateX(0%);
+      }
+      .submenu {
+        opacity: 1;
       }
     }
   }

@@ -85,7 +85,7 @@
           transform: translate(-50%, 450%) rotate(90deg);
           line-height: 1rem;
           font-size: 0.75rem;
-          font-weight: 600;
+          font-weight: bold;
           letter-spacing: 0.1rem;
           color: var(--dark);
           text-transform: uppercase;
