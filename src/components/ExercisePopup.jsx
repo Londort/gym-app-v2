@@ -3,9 +3,6 @@ import styles from './ExercisePopup.module.css';
 import { FaDumbbell, FaRunning } from 'react-icons/fa';
 import { IoMdAddCircleOutline } from 'react-icons/io';
 import { GrYoga } from 'react-icons/gr';
-import Exercise from './Exercise';
-import { useState } from 'react';
-import ExerciseForm from './ExerciseForm';
 
 const ExercisePopup = (props) => {
   const {
@@ -14,9 +11,6 @@ const ExercisePopup = (props) => {
     exerciseType,
     toggleExerciseForm,
   } = props;
-  console.log(props);
-
-  // const [selectedType, setSelectedType] = useState(null);
 
   const closePopup = () => {
     toggleExercisePopup();

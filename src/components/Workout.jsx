@@ -18,7 +18,6 @@ const Workout = (props) => {
   const [isMenuActive, setIsMenuActive] = useState(false);
   const [isExercisePopup, setIsExercisePopup] = useState(false);
   const [selectedType, setSelectedType] = useState(null);
-  console.log(selectedType);
   const [isExerciseFormOpen, setIsExerciseFormOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -27,6 +26,7 @@ const Workout = (props) => {
 
   const toggleExercisePopup = () => {
     setIsExercisePopup(!isExercisePopup);
+    setIsMenuActive(!isMenuActive);
   };
 
   const toggleExerciseForm = () => {
@@ -36,16 +36,15 @@ const Workout = (props) => {
   const exerciseType = (type) => {
     const updateType = type;
     setSelectedType(updateType);
-    // console.log(selectedType);
   };
 
-  const addExercise = () => {
-    const exercise = {
-      title: '',
-      sets: '',
-      reps: '',
-      weight: '',
-    };
+  const addExercise = (exercise) => {
+    // const exercise = {
+    //   title: '',
+    //   sets: '',
+    //   reps: '',
+    //   weight: '',
+    // };
     workout.exercises.push(exercise);
     updateWorkout(exercise);
     toggleMenu();
@@ -54,8 +53,7 @@ const Workout = (props) => {
   return (
     <>
       <div className={styles.container}>
-        <p>Workout {workout.name}</p>
-
+        {/* Menu button */}
         <div className={`${styles.btn} ${isMenuActive ? styles.open : ''}`}>
           <div className={styles.btn_icon}>
             <PiDotsThreeCircleVertical
@@ -86,11 +84,14 @@ const Workout = (props) => {
             </div>
           </div>
         </div>
-
         <div className={styles.btn_wrapper}></div>
-        {workout.exercises.map((exercise) => (
-          <Exercise data={exercise} />
-        ))}
+
+        {/* Exercises List */}
+        <div className={styles.body}>
+          {workout.exercises.map((exercise) => (
+            <Exercise data={exercise} />
+          ))}
+        </div>
       </div>
 
       {isExercisePopup && (
@@ -100,6 +101,7 @@ const Workout = (props) => {
           toggleExerciseForm={toggleExerciseForm}
           isExerciseFormOpen={isExerciseFormOpen}
           exerciseType={exerciseType}
+          // setSelectedType={setSelectedType}
         />
       )}
       {isExerciseFormOpen && (
@@ -107,6 +109,7 @@ const Workout = (props) => {
           type={selectedType}
           toggleExerciseForm={toggleExerciseForm}
           setSelectedType={setSelectedType}
+          addExercise={addExercise}
         />
       )}
     </>

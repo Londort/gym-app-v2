@@ -1,0 +1,16 @@
+@import '../var.css';
+
+.btn {
+  background-color: var(--dark);
+  color: var(--extra1);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: calc(var(--padding));
+  svg {
+    width: var(--width);
+    height: var(--height);
+  }
+}

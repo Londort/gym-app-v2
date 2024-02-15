@@ -1,5 +1,18 @@
 .App {
   text-align: center;
-  height: 100%;
+  min-height: 100%;
+  height: auto;
   display: flex;
+  box-sizing: border-box;
+}
+input {
+  outline: none;
+  font: inherit;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+ul li {
+  list-style-type: none;
 }
