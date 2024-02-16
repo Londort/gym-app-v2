@@ -24,6 +24,13 @@ function App() {
     setWorkouts(updateWorkouts);
   };
 
+  const deleteWorkout = (id) => {
+    const updateWorkouts = workouts.filter((workout) => workout.id !== id);
+    LocalStorage.updateWorkouts(updateWorkouts);
+    setWorkouts(updateWorkouts);
+    window.location.href = '/';
+  };
+
   const updateWorkout = (workout) => {
     const newWorkouts = workouts.map((item) => {
       if (workout.id === item.id) {
@@ -50,7 +57,11 @@ function App() {
               key={workout.id}
               path={`/workout${workout.name}`}
               element={
-                <Workout workout={workout} updateWorkout={updateWorkout} />
+                <Workout
+                  workout={workout}
+                  updateWorkout={updateWorkout}
+                  deleteWorkout={deleteWorkout}
+                />
               }
             />
           ))}

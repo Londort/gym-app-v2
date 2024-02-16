@@ -5,14 +5,10 @@ import { FaDumbbell } from 'react-icons/fa';
 import { IoMdAddCircleOutline } from 'react-icons/io';
 
 import styles from './WorkoutList.module.css';
-// import Workout from './Workout';
 
 const WorkoutList = (props) => {
   const { workouts, addWorkout } = props;
-  // const [workouts, setWorkouts] = useState([]);
   const [isBtnActive, setIsBtnActive] = useState(false);
-
-  // useEffect(() => setWorkouts(LocalStorage.getWorkouts()), []);
 
   useEffect(() => {
     const handleClickOutsideBtn = (e) => {
@@ -23,7 +19,6 @@ const WorkoutList = (props) => {
     };
 
     if (isBtnActive) {
-      // items.forEach((item) => (item.style.opacity = 0.5));
       document.addEventListener('click', handleClickOutsideBtn);
     } else {
       document.removeEventListener('click', handleClickOutsideBtn);
@@ -31,7 +26,6 @@ const WorkoutList = (props) => {
 
     return () => {
       document.removeEventListener('click', handleClickOutsideBtn);
-      // items.forEach((item) => (item.style.opacity = 1));
     };
   }, [isBtnActive]);
 
@@ -43,16 +37,6 @@ const WorkoutList = (props) => {
       setIsBtnActive(!isBtnActive);
     }
   };
-
-  // const addWorkout = () => {
-  //   const workout = {
-  //     id: uuidv4(),
-  //     name: `Workout${workouts.length + 1}`,
-  //   };
-  //   const updateWorkouts = [...workouts, workout];
-  //   LocalStorage.updateWorkouts(updateWorkouts);
-  //   setWorkouts(updateWorkouts);
-  // };
 
   return (
     <section className={styles.container}>
