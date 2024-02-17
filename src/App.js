@@ -28,7 +28,7 @@ function App() {
     const updateWorkouts = workouts.filter((workout) => workout.id !== id);
     LocalStorage.updateWorkouts(updateWorkouts);
     setWorkouts(updateWorkouts);
-    window.location.href = '/';
+    // window.location.href = '/';
   };
 
   const updateWorkout = (workout) => {

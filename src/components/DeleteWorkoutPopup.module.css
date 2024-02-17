@@ -11,7 +11,7 @@
   align-items: center;
   justify-content: center;
   background-color: var(--light);
-  z-index: 2;
+  z-index: 5;
 
   .wrapper {
     height: 70%;

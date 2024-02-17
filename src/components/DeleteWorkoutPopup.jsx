@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import RoundBtn from '../UI/RoundBtn';
 import styles from './DeleteWorkoutPopup.module.css';
 
@@ -8,16 +9,22 @@ import {
 
 const DeleteWorkoutPopup = (props) => {
   const { toggleDeleteWorkout, deleteWorkout, id } = props;
-  console.log(props);
 
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
         <p className={styles.header}>Delete the whole Workout?</p>
         <div className={styles.body}>
-          <div className={styles.yes} onClick={() => deleteWorkout(id)}>
+          <Link
+            to="/"
+            className={styles.yes}
+            onClick={() => {
+              deleteWorkout(id);
+              // window.location.href = '/';
+            }}
+          >
             <RoundBtn icon={<IoIosCheckmarkCircleOutline />} />
-          </div>
+          </Link>
           <div className={styles.no} onClick={toggleDeleteWorkout}>
             <RoundBtn icon={<IoIosCloseCircleOutline />} />
           </div>

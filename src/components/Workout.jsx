@@ -1,5 +1,4 @@
-// import { useEffect, useState } from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { IoMdAddCircleOutline, IoMdCloseCircleOutline } from 'react-icons/io';
@@ -11,6 +10,7 @@ import Exercise from './Exercise';
 import styles from './Workout.module.css';
 import ExerciseForm from './ExerciseForm';
 import DeleteWorkoutPopup from './DeleteWorkoutPopup';
+import EditExercise from './EditExercise';
 
 const Workout = (props) => {
   const { workout, updateWorkout, deleteWorkout } = props;
@@ -20,6 +20,28 @@ const Workout = (props) => {
   const [selectedType, setSelectedType] = useState(null);
   const [isExerciseFormOpen, setIsExerciseFormOpen] = useState(false);
   const [deleteWorkoutPopup, setDeleteWorkoutPopup] = useState(false);
+  const [isEditExerciseActive, setIsEditExerciseActive] = useState(false);
+  const [currentExercise, setCurrentExercise] = useState({});
+
+  useEffect(() => {
+    // close menu is clicked on the screen
+    const handleClickOutsideBtn = (e) => {
+      const btn = document.querySelector(`.${styles.btn}`);
+      if (!btn.contains(e.target)) {
+        setIsMenuActive(false);
+      }
+    };
+
+    if (isMenuActive) {
+      document.addEventListener('click', handleClickOutsideBtn);
+    } else {
+      document.removeEventListener('click', handleClickOutsideBtn);
+    }
+
+    return () => {
+      document.removeEventListener('click', handleClickOutsideBtn);
+    };
+  }, [isMenuActive]);
 
   const toggleMenu = () => {
     setIsMenuActive(!isMenuActive);
@@ -33,6 +55,26 @@ const Workout = (props) => {
   const toggleExerciseForm = () => {
     setIsExerciseFormOpen(!isExerciseFormOpen);
   };
+
+  // Edit-exercise logics
+
+  const toggleEditExercise = (exercise) => {
+    setCurrentExercise(exercise);
+    setIsEditExerciseActive(!isEditExerciseActive);
+  };
+
+  const updateExercise = (exercise) => {
+    const updateExercises = workout.exercises.map((item) => {
+      if (item.id === exercise.id) {
+        return exercise;
+      }
+      return item;
+    });
+    workout.exercises = updateExercises;
+    updateWorkout(updateExercises);
+  };
+
+  // .. ends here
 
   const exerciseType = (type) => {
     const updateType = type;
@@ -117,6 +159,7 @@ const Workout = (props) => {
               key={exercise.id}
               data={exercise}
               deleteExercise={deleteExercise}
+              EditExercise={toggleEditExercise}
             />
           ))}
         </div>
@@ -139,6 +182,16 @@ const Workout = (props) => {
           toggleExerciseForm={toggleExerciseForm}
           setSelectedType={setSelectedType}
           addExercise={addExercise}
+        />
+      )}
+
+      {/* Edit exercise */}
+      {isEditExerciseActive && (
+        <EditExercise
+          toggleEditExercise={toggleEditExercise}
+          currentExercise={currentExercise}
+          setCurrentExercise={setCurrentExercise}
+          editExercise={updateExercise}
         />
       )}
 
