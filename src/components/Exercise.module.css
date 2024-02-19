@@ -6,7 +6,7 @@
   justify-content: flex-start;
   align-items: center;
   border-radius: 20px;
-  width: 94%;
+  width: 85%;
   margin-left: 5%;
   .wrapper {
     width: 100%;
@@ -47,11 +47,12 @@
       opacity: 0;
       overflow: hidden;
       transition: all 0.3s ease-out;
-      padding-left: 1.5rem;
+      padding-left: 0.5rem;
       display: flex;
       flex-direction: row;
       align-items: center;
       gap: 10px;
+
       .submenu {
         color: var(--extra1);
         display: grid;
@@ -62,13 +63,17 @@
           place-items: center;
           transition: all 0.3s ease-out;
           z-index: 1;
+
+          width: var(--width);
+          height: var(--width);
+          position: relative;
         }
         .submenu_edit,
         .submenu_del {
           transition: all 0.3s ease;
           position: absolute;
-          top: -50%;
-          left: -50%;
+          top: -0%;
+          left: -0%;
           opacity: 0;
           background-color: var(--dark);
           display: grid;
@@ -76,7 +81,12 @@
           width: var(--width);
           height: var(--width);
           border-radius: 50%;
+          /* padding: var(--padding); */
           z-index: 0;
+          svg {
+            width: 70%;
+            height: 70%;
+          }
         }
 
         &.active {
@@ -84,13 +94,14 @@
           .submenu_del {
             opacity: 1;
           }
+          .submenu_icon {
+            color: var(--dark);
+          }
           .submenu_edit {
-            left: var(--width);
-            /* transform: translateX(1rem); */
+            left: calc(var(--width) * 2);
           }
           .submenu_del {
-            left: calc(var(--width) * 2.5);
-            /* transform: translateX(2rem); */
+            left: calc(var(--width) * 4);
           }
           .submenu_icon {
             transform: rotate(180deg);

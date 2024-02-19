@@ -4,13 +4,15 @@
   background-color: var(--dark);
   color: var(--extra1);
   border-radius: 50%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: calc(var(--padding));
+  display: grid;
+  place-items: center;
+  padding: var(--padding);
+  /* width: var(--width); */
+  /* height: var(--width); */
   svg {
+    display: grid;
+    place-items: center;
     width: var(--width);
-    height: var(--height);
+    height: var(--width);
   }
 }
