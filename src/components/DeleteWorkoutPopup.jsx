@@ -20,7 +20,6 @@ const DeleteWorkoutPopup = (props) => {
             className={styles.yes}
             onClick={() => {
               deleteWorkout(id);
-              // window.location.href = '/';
             }}
           >
             <RoundBtn icon={<IoIosCheckmarkCircleOutline />} />

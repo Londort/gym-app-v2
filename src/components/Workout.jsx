@@ -24,7 +24,7 @@ const Workout = (props) => {
   const [currentExercise, setCurrentExercise] = useState({});
 
   useEffect(() => {
-    // close menu is clicked on the screen
+    // close menu if clicked on the screen
     const handleClickOutsideBtn = (e) => {
       const btn = document.querySelector(`.${styles.btn}`);
       if (!btn.contains(e.target)) {
