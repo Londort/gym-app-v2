@@ -3,9 +3,11 @@ import RoundBtn from '../UI/RoundBtn';
 import styles from './DeleteWorkoutPopup.module.css';
 
 import {
-  IoIosCheckmarkCircleOutline,
-  IoIosCloseCircleOutline,
-} from 'react-icons/io';
+  // IoCheckmarkCircleOutline,
+  // IoCloseCircleOutline,
+  IoCheckmarkDone,
+  IoCloseSharp,
+} from 'react-icons/io5';
 
 const DeleteWorkoutPopup = (props) => {
   const { toggleDeleteWorkout, deleteWorkout, id } = props;
@@ -22,10 +24,10 @@ const DeleteWorkoutPopup = (props) => {
               deleteWorkout(id);
             }}
           >
-            <RoundBtn icon={<IoIosCheckmarkCircleOutline />} />
+            <RoundBtn icon={<IoCheckmarkDone />} />
           </Link>
           <div className={styles.no} onClick={toggleDeleteWorkout}>
-            <RoundBtn icon={<IoIosCloseCircleOutline />} />
+            <RoundBtn icon={<IoCloseSharp />} />
           </div>
         </div>
       </div>

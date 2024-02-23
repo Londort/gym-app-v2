@@ -1,16 +1,21 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { IoMdAddCircleOutline, IoMdCloseCircleOutline } from 'react-icons/io';
-import { IoArrowUndoCircleOutline } from 'react-icons/io5';
-import { PiDotsThreeCircleVertical } from 'react-icons/pi';
+import {
+  IoArrowUndoCircleOutline,
+  IoEllipsisHorizontalCircle,
+  IoAddCircleOutline,
+  IoBanOutline,
+} from 'react-icons/io5';
 import ExercisePopup from './ExercisePopup';
 import Exercise from './Exercise';
+import Menu from '../UI/Menu';
 
 import styles from './Workout.module.css';
 import ExerciseForm from './ExerciseForm';
 import DeleteWorkoutPopup from './DeleteWorkoutPopup';
 import EditExercise from './EditExercise';
+import RoundBtn from '../UI/RoundBtn';
 
 const Workout = (props) => {
   const { workout, updateWorkout, deleteWorkout } = props;
@@ -23,33 +28,13 @@ const Workout = (props) => {
   const [isEditExerciseActive, setIsEditExerciseActive] = useState(false);
   const [currentExercise, setCurrentExercise] = useState({});
 
-  useEffect(() => {
-    // close menu if clicked on the screen
-    const handleClickOutsideBtn = (e) => {
-      const btn = document.querySelector(`.${styles.btn}`);
-      if (!btn.contains(e.target)) {
-        setIsMenuActive(false);
-      }
-    };
-
-    if (isMenuActive) {
-      document.addEventListener('click', handleClickOutsideBtn);
-    } else {
-      document.removeEventListener('click', handleClickOutsideBtn);
-    }
-
-    return () => {
-      document.removeEventListener('click', handleClickOutsideBtn);
-    };
-  }, [isMenuActive]);
-
   const toggleMenu = () => {
     setIsMenuActive(!isMenuActive);
   };
 
   const toggleExercisePopup = () => {
     setIsExercisePopup(!isExercisePopup);
-    setIsMenuActive(!isMenuActive);
+    // setIsMenuActive(!isMenuActive);
   };
 
   const toggleExerciseForm = () => {
@@ -108,49 +93,43 @@ const Workout = (props) => {
   return (
     <>
       <div className={styles.container}>
-        {/* Menu button */}
-        <div className={`${styles.btn} ${isMenuActive ? styles.open : ''}`}>
-          <aside className={styles.workoutName}>
-            <span>Workout {workout.name}</span>
-          </aside>
-          <div className={styles.btn_icon}>
-            <PiDotsThreeCircleVertical
-              className={styles.icon}
-              onClick={toggleMenu}
-            ></PiDotsThreeCircleVertical>
+        <div className={styles.workout_name}>workout {workout.name}</div>
+        <Menu icon={<IoEllipsisHorizontalCircle />}>
+          <Link to="/">
+            <RoundBtn icon={<IoArrowUndoCircleOutline />} />
+          </Link>
 
-            {/* submenu block */}
-            <div className={styles.submenu}>
-              <Link
-                to="/"
-                className={`${styles.backward_btn} ${styles.icon_wrap}`}
-              >
-                <IoArrowUndoCircleOutline className={styles.submenu_icon} />
-              </Link>
+          <RoundBtn
+            icon={
+              <IoAddCircleOutline
+                onClick={() => {
+                  toggleExercisePopup();
+                }}
+              />
+            }
+          />
 
-              <div className={`${styles.add_exercise} ${styles.icon_wrap}`}>
-                <IoMdAddCircleOutline
-                  className={styles.submenu_icon}
-                  onClick={() => {
-                    toggleExercisePopup();
-                    toggleMenu();
-                  }}
-                />
-              </div>
-
-              <div
-                className={`${styles.del_workout} ${styles.icon_wrap}`}
+          <RoundBtn
+            icon={
+              <IoBanOutline
                 onClick={() => {
                   toggleDeleteWorkout();
                   toggleMenu();
                 }}
-              >
-                <IoMdCloseCircleOutline className={styles.submenu_icon} />
-              </div>
-            </div>
+              />
+            }
+          />
+        </Menu>
+
+        {!workout.exercises.length && (
+          <div className={styles.empty}>
+            No exercises yet
+            <br />
+            start from
+            <RoundBtn icon={<IoEllipsisHorizontalCircle />} />
+            button
           </div>
-        </div>
-        <div className={styles.btn_wrapper}></div>
+        )}
 
         {/* Exercises List */}
         <div className={styles.body}>
@@ -163,7 +142,6 @@ const Workout = (props) => {
             />
           ))}
         </div>
-        {/* Workout name on the side*/}
       </div>
 
       {isExercisePopup && (

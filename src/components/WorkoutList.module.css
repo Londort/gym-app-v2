@@ -8,13 +8,7 @@
   align-items: center;
   justify-content: flex-start;
   background-color: var(--light);
-  .btn_icon {
-    width: 2rem;
-    height: 2rem;
-    background-color: var(--dark);
-    color: var(--extra1);
-    border-radius: 50%;
-  }
+
   .btn_wrapper {
     position: fixed;
     top: 0;
@@ -28,11 +22,6 @@
   }
 
   .btn {
-    --width: 2rem;
-    --height: var(--width);
-    --padding: calc(var(--width) * 0.1);
-    --box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.9);
-
     position: fixed;
     top: var(--height);
     left: 0;
@@ -49,23 +38,17 @@
 
     .btn_icon {
       position: absolute;
-      top: 0;
-      right: 0;
-      transform: translateY(-50%);
+      top: 0%;
+      right: 0%;
       transform: translateX(50%);
-      width: var(--width);
-      height: var(--height);
-      background-color: var(--dark);
-      color: var(--extra1);
-      border-radius: 50%;
-      padding: var(--padding);
       transition: all 0.2s ease-out;
-      box-shadow: var(--box-shadow);
-      .icon {
-        width: 100%;
-        height: 100%;
-        transition: all 0.2s ease-out;
-      }
+      display: flex;
+    }
+    .add_workout {
+      position: absolute;
+      transform: translateX(50%);
+      top: 0%;
+      right: 0%;
     }
     &.open {
       width: calc(var(--width) * 1);
@@ -74,23 +57,7 @@
 
       .btn_icon {
         z-index: 2;
-        .icon {
-          transform: translateX(00%) rotate(270deg);
-        }
-        &::after {
-          content: 'add workout';
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, 450%) rotate(90deg);
-          line-height: 1rem;
-          font-size: 0.75rem;
-          font-weight: bold;
-          letter-spacing: 0.1rem;
-          color: var(--dark);
-          text-transform: uppercase;
-          text-wrap: nowrap;
-        }
+        transform: translateX(50%) rotate(225deg);
       }
       & + .btn_wrapper {
         transform: translateX(0%);
@@ -99,8 +66,10 @@
   }
   .empty {
     height: 100%;
-    display: grid;
-    place-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
   .item {
     margin: 1rem 0;
@@ -133,6 +102,47 @@
       color: var(--light);
       span {
         color: var(--extra1);
+      }
+    }
+  }
+  .menu {
+    position: fixed;
+    top: 300px;
+    left: 0;
+    width: var(--width);
+    height: var(--width);
+    padding: var(--padding);
+    background-color: var(--dark);
+    transform: translateX(-50%);
+
+    transition: all 0.2s ease-out;
+    .menu_icon {
+      position: absolute;
+      top: 0;
+      /* left: 0; */
+      right: -50%;
+      z-index: 5;
+      transition: all 0.2s ease-out;
+    }
+    .submenu {
+      transform: translateX(50%);
+      z-index: 1;
+    }
+    .submenu .create {
+      position: absolute;
+      top: 0;
+      opacity: 0;
+      transition: all 0.2s ease-out 0.2s;
+    }
+
+    &.open {
+      transform: translateX(0%);
+      .menu_icon {
+        transform: rotate(225deg);
+      }
+      .submenu .create {
+        top: calc(var(--width) * 1.4);
+        opacity: 1;
       }
     }
   }

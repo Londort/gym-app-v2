@@ -3,7 +3,6 @@
   min-height: 100%;
   height: auto;
   display: flex;
-  box-sizing: border-box;
 }
 input {
   outline: none;

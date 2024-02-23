@@ -1,0 +1,68 @@
+@import '../var.css';
+
+.menu {
+  position: fixed;
+  top: var(--width);
+  right: 0;
+  width: var(--width);
+  height: var(--width);
+  padding: var(--padding);
+  background-color: var(--dark);
+  transform: translateX(50%);
+  transition: all 0.3s ease-out;
+  z-index: 3;
+
+  .menu_icon {
+    position: absolute;
+    top: 0;
+    left: -50%;
+    z-index: 5;
+    transition: all 0.3s ease-out;
+  }
+
+  .submenu {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    top: 150%;
+    right: -50%;
+    transition: all 0.3s ease-out;
+    & div {
+      opacity: 0;
+      z-index: 0;
+      transition: all 0.4s ease-out;
+    }
+  }
+}
+.menu_wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background-color: var(--light);
+  opacity: 0;
+  z-index: 2;
+  transition: opacity 0.3s ease-out;
+}
+
+.menu.open {
+  transform: translateX(0%);
+  .menu_icon {
+    transform: rotate(270deg);
+  }
+  .submenu {
+    right: 50%;
+    z-index: 5;
+    div {
+      opacity: 1;
+      z-index: 5;
+      transform: rotate(360deg);
+    }
+  }
+  & + .menu_wrapper {
+    width: 100%;
+    opacity: 0.7;
+  }
+}

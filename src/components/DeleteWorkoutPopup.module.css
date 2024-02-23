@@ -35,6 +35,7 @@
   .yes,
   .no {
     position: relative;
+    display: flex;
   }
   .yes::before {
     content: 'yes';

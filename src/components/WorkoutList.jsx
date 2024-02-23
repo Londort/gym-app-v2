@@ -1,63 +1,41 @@
-import { useEffect, useState } from 'react';
+// import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { FaDumbbell } from 'react-icons/fa';
-import { IoMdAddCircleOutline } from 'react-icons/io';
+import { MdQrCodeScanner } from 'react-icons/md';
+import { RiQrCodeLine, RiQrScan2Line } from 'react-icons/ri';
+import { HiOutlineInformationCircle } from 'react-icons/hi2';
+import {
+  IoEllipsisHorizontalCircle,
+  IoInformationCircleOutline,
+  IoAddCircleOutline,
+} from 'react-icons/io5';
 
 import styles from './WorkoutList.module.css';
+import RoundBtn from '../UI/RoundBtn';
+import Menu from '../UI/Menu';
 
 const WorkoutList = (props) => {
   const { workouts, addWorkout } = props;
-  const [isBtnActive, setIsBtnActive] = useState(false);
-
-  useEffect(() => {
-    const handleClickOutsideBtn = (e) => {
-      const btn = document.querySelector(`.${styles.btn}`);
-      if (!btn.contains(e.target)) {
-        setIsBtnActive(false);
-      }
-    };
-
-    if (isBtnActive) {
-      document.addEventListener('click', handleClickOutsideBtn);
-    } else {
-      document.removeEventListener('click', handleClickOutsideBtn);
-    }
-
-    return () => {
-      document.removeEventListener('click', handleClickOutsideBtn);
-    };
-  }, [isBtnActive]);
-
-  const toggleOpen = () => {
-    if (isBtnActive) {
-      addWorkout();
-      setIsBtnActive(false);
-    } else {
-      setIsBtnActive(!isBtnActive);
-    }
-  };
+  // const [isBtnActive, setIsBtnActive] = useState(false);
 
   return (
     <section className={styles.container}>
-      <div className={`${styles.btn} ${isBtnActive ? styles.open : ''}`}>
-        <div className={styles.btn_icon}>
-          <IoMdAddCircleOutline
-            onClick={toggleOpen}
-            className={styles.icon}
-          ></IoMdAddCircleOutline>
-        </div>
-      </div>
+      <Menu icon={<IoEllipsisHorizontalCircle />}>
+        <RoundBtn icon={<IoAddCircleOutline onClick={addWorkout} />} />
+        <RoundBtn icon={<HiOutlineInformationCircle />} />
+        <RoundBtn icon={<RiQrCodeLine />} />
+        <RoundBtn icon={<RiQrScan2Line />} />
+      </Menu>
       <div className={styles.btn_wrapper}></div>
 
       {!workouts.length && (
         <div className={styles.empty}>
-          <div>
-            No workouts yet <br />
-            start from <br />
-            <IoMdAddCircleOutline className={styles.btn_icon} /> <br />
-            button
-          </div>
+          No workouts yet
+          <br />
+          start from
+          <RoundBtn icon={<IoEllipsisHorizontalCircle />} />
+          button
         </div>
       )}
       {workouts.map((workout) => (
