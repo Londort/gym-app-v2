@@ -1,8 +1,11 @@
+@import './var.css';
+
 .App {
   text-align: center;
   min-height: 100%;
   height: auto;
   display: flex;
+  background-color: var(--light);
 }
 input {
   outline: none;

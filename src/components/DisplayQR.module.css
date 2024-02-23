@@ -1,0 +1,21 @@
+@import '../var.css';
+
+.container {
+  background-color: var(--light);
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  .body {
+    padding: 1rem;
+    border: 2px solid var(--extra1);
+    border-radius: 20px;
+    canvas {
+      width: 200px;
+      height: 200px;
+      color: var(--extra1);
+    }
+  }
+}

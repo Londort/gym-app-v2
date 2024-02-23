@@ -1,0 +1,26 @@
+@import '../var.css';
+
+.container {
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.scan {
+  width: 60%;
+  display: grid;
+  place-items: center;
+  /* height: 300px; */
+  border-radius: 20px;
+
+  padding: 1rem;
+  border: 3px solid var(--extra1);
+  div {
+    border-radius: 10px;
+    div {
+      display: none;
+    }
+  }
+}
