@@ -7,6 +7,8 @@ import WorkoutList from './components/WorkoutList';
 import Workout from './components/Workout';
 
 import './App.css';
+import DisplayQR from './components/DisplayQR';
+import ScanQR from './components/ScanQR';
 
 function App() {
   const [workouts, setWorkouts] = useState([]);
@@ -65,6 +67,8 @@ function App() {
               }
             />
           ))}
+          <Route path="displayQR" element={<DisplayQR />} />
+          <Route path="scanQR" element={<ScanQR />} />
 
           {/* <Route path="/workout/:name" element={<Workout />} /> */}
         </Routes>

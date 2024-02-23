@@ -24,8 +24,12 @@ const WorkoutList = (props) => {
       <Menu icon={<IoEllipsisHorizontalCircle />}>
         <RoundBtn icon={<IoAddCircleOutline onClick={addWorkout} />} />
         <RoundBtn icon={<HiOutlineInformationCircle />} />
-        <RoundBtn icon={<RiQrCodeLine />} />
-        <RoundBtn icon={<RiQrScan2Line />} />
+        <Link to="displayQR">
+          <RoundBtn icon={<RiQrCodeLine />} />
+        </Link>
+        <Link to="scanQR">
+          <RoundBtn icon={<RiQrScan2Line />} />
+        </Link>
       </Menu>
       <div className={styles.btn_wrapper}></div>
 
