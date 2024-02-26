@@ -1,13 +1,10 @@
-// import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { FaDumbbell } from 'react-icons/fa';
-import { MdQrCodeScanner } from 'react-icons/md';
 import { RiQrCodeLine, RiQrScan2Line } from 'react-icons/ri';
 import { HiOutlineInformationCircle } from 'react-icons/hi2';
 import {
   IoEllipsisHorizontalCircle,
-  IoInformationCircleOutline,
   IoAddCircleOutline,
 } from 'react-icons/io5';
 
@@ -17,19 +14,21 @@ import Menu from '../UI/Menu';
 
 const WorkoutList = (props) => {
   const { workouts, addWorkout } = props;
-  // const [isBtnActive, setIsBtnActive] = useState(false);
 
   return (
     <section className={styles.container}>
       <Menu icon={<IoEllipsisHorizontalCircle />}>
-        <RoundBtn icon={<IoAddCircleOutline onClick={addWorkout} />} />
-        <RoundBtn icon={<HiOutlineInformationCircle />} />
+        <RoundBtn
+          icon={<IoAddCircleOutline onClick={addWorkout} />}
+          tooltip="add new"
+        />
         <Link to="displayQR">
-          <RoundBtn icon={<RiQrCodeLine />} />
+          <RoundBtn icon={<RiQrCodeLine />} tooltip="display QR" />
         </Link>
         <Link to="scanQR">
-          <RoundBtn icon={<RiQrScan2Line />} />
+          <RoundBtn icon={<RiQrScan2Line />} tooltip="scan QR" />
         </Link>
+        <RoundBtn icon={<HiOutlineInformationCircle />} tooltip="info" />
       </Menu>
       <div className={styles.btn_wrapper}></div>
 

@@ -32,6 +32,10 @@
       opacity: 0;
       z-index: 0;
       transition: all 0.4s ease-out;
+      svg {
+        translate: rotate(0deg);
+        transition: all 0.3s ease-out;
+      }
     }
   }
 }
@@ -58,11 +62,13 @@
     div {
       opacity: 1;
       z-index: 5;
-      transform: rotate(360deg);
+      svg {
+        transform: rotate(360deg);
+      }
     }
   }
   & + .menu_wrapper {
     width: 100%;
-    opacity: 0.7;
+    opacity: 0.85;
   }
 }

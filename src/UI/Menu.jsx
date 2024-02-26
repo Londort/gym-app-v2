@@ -4,6 +4,7 @@ import RoundBtn from './RoundBtn';
 
 const Menu = (props) => {
   const { children, icon } = props;
+  console.log(children);
   const [menuActive, setMenuActive] = useState(false);
 
   useEffect(() => {
