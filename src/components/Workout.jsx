@@ -19,6 +19,7 @@ import RoundBtn from '../UI/RoundBtn';
 
 const Workout = (props) => {
   const { workout, updateWorkout, deleteWorkout } = props;
+  console.log(workout.exercises.length);
 
   const [isMenuActive, setIsMenuActive] = useState(false);
   const [isExercisePopup, setIsExercisePopup] = useState(false);
@@ -34,7 +35,6 @@ const Workout = (props) => {
 
   const toggleExercisePopup = () => {
     setIsExercisePopup(!isExercisePopup);
-    // setIsMenuActive(!isMenuActive);
   };
 
   const toggleExerciseForm = () => {
@@ -71,12 +71,6 @@ const Workout = (props) => {
   };
 
   const addExercise = (exercise) => {
-    // const exercise = {
-    //   title: '',
-    //   sets: '',
-    //   reps: '',
-    //   weight: '',
-    // };
     workout.exercises.push(exercise);
     updateWorkout(exercise);
     toggleMenu();
@@ -96,7 +90,7 @@ const Workout = (props) => {
         <div className={styles.workout_name}>workout {workout.name}</div>
         <Menu icon={<IoEllipsisHorizontalCircle />}>
           <Link to="/">
-            <RoundBtn icon={<IoArrowUndoCircleOutline />} />
+            <RoundBtn icon={<IoArrowUndoCircleOutline />} tooltip="back" />
           </Link>
 
           <RoundBtn
@@ -107,6 +101,7 @@ const Workout = (props) => {
                 }}
               />
             }
+            tooltip="add new"
           />
 
           <RoundBtn
@@ -118,10 +113,11 @@ const Workout = (props) => {
                 }}
               />
             }
+            tooltip="delete workout"
           />
         </Menu>
 
-        {!workout.exercises.length && (
+        {workout.exercises.length === 0 ? (
           <div className={styles.empty}>
             No exercises yet
             <br />
@@ -129,19 +125,18 @@ const Workout = (props) => {
             <RoundBtn icon={<IoEllipsisHorizontalCircle />} />
             button
           </div>
+        ) : (
+          <div className={styles.body}>
+            {workout.exercises.map((exercise) => (
+              <Exercise
+                key={exercise.id}
+                data={exercise}
+                deleteExercise={deleteExercise}
+                EditExercise={toggleEditExercise}
+              />
+            ))}
+          </div>
         )}
-
-        {/* Exercises List */}
-        <div className={styles.body}>
-          {workout.exercises.map((exercise) => (
-            <Exercise
-              key={exercise.id}
-              data={exercise}
-              deleteExercise={deleteExercise}
-              EditExercise={toggleEditExercise}
-            />
-          ))}
-        </div>
       </div>
 
       {isExercisePopup && (

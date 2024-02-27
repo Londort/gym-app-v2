@@ -2,156 +2,10 @@
 
 .container {
   width: 100%;
-  height: auto;
+  min-height: 100%;
   background-color: var(--light);
+  display: flex;
 
-  .btn_wrapper {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: var(--light);
-    transform: translateX(+100%);
-    opacity: 0.8;
-    z-index: 2;
-  }
-
-  .btn {
-    position: fixed;
-    top: var(--height);
-    right: 0;
-    display: grid;
-    place-items: center;
-    background-color: var(--dark);
-    height: var(--height);
-    width: calc(var(--width) * 0.5);
-    transition: all 0.2s ease-out;
-    padding: var(--padding);
-    opacity: 1;
-    box-shadow: var(--box-shadow);
-    z-index: 4;
-
-    .btn_icon {
-      position: absolute;
-      top: 0;
-      left: 0;
-      transform: translateY(-50%);
-      transform: translateX(-50%);
-      width: var(--width);
-      height: var(--height);
-      background-color: var(--dark);
-      color: var(--extra1);
-      border-radius: 50%;
-      padding: var(--padding);
-      transition: all 0.2s ease-out;
-      box-shadow: var(--box-shadow);
-      .icon {
-        width: 100%;
-        height: 100%;
-        transition: all 0.2s ease-out;
-      }
-      .submenu {
-        position: absolute;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-        margin-top: calc(var(--height) / 2);
-        width: var(--width);
-        transform-origin: top;
-        opacity: 0;
-        transition: all 0.2s ease 0.2s;
-
-        .icon_wrap {
-          display: grid;
-          place-items: center;
-          font-size: 0.75rem;
-          font-weight: bold;
-          text-wrap: nowrap;
-          color: var(--dark);
-          text-transform: uppercase;
-        }
-        .backward_btn::before {
-          content: 'back';
-          position: absolute;
-          right: calc(100% + (var(--width) / 2));
-        }
-        .add_exercise::before {
-          content: 'add exercise';
-          position: absolute;
-          right: calc(100% + (var(--width) / 2));
-        }
-        .del_workout::before {
-          content: 'delete workout';
-          position: absolute;
-          right: calc(100% + (var(--width) / 2));
-        }
-        .backward_btn::before,
-        .add_exercise::before,
-        .del_workout::before {
-          display: none;
-        }
-
-        .submenu_icon {
-          width: var(--width);
-          height: var(--height);
-          background-color: var(--dark);
-          color: var(--extra1);
-          border-radius: 50%;
-          padding: var(--padding);
-        }
-      }
-    }
-
-    &.open {
-      width: calc(var(--width) * 1);
-      opacity: 1;
-      z-index: 4;
-
-      .btn_icon {
-        /* z-index: 1; */
-        .icon {
-          transform: translateX(00%) rotate(-270deg);
-        }
-      }
-      .submenu {
-        .backward_btn::before,
-        .add_exercise::before,
-        .del_workout::before {
-          display: block;
-        }
-      }
-
-      & + .btn_wrapper {
-        transform: translateX(0%);
-      }
-      .submenu {
-        opacity: 1;
-      }
-      & .workoutName {
-        opacity: 0;
-        transform: translateX(2rem);
-      }
-    }
-    /* .workout_name {
-      position: absolute;
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      right: calc(var(--width) / 10);
-      top: calc(var(--width) * 1.3);
-      width: 1.5rem;
-      height: 300px;
-      background-color: var(--dark);
-      color: var(--extra1);
-      writing-mode: vertical-rl;
-      letter-spacing: 5px;
-      text-transform: lowercase;
-      opacity: 1;
-      transition: all 0.3s ease-out 0s;
-    } */
-  }
   .workout_name {
     position: fixed;
     top: calc(var(--width) * 2.5);
@@ -164,13 +18,16 @@
   .body {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: flex-start;
     padding-top: 1rem;
     padding-bottom: 1rem;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
   }
   .empty {
-    height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;

@@ -1,10 +1,11 @@
+import React from 'react';
 import { useState, useEffect } from 'react';
 import styles from './Menu.module.css';
 import RoundBtn from './RoundBtn';
 
 const Menu = (props) => {
   const { children, icon } = props;
-  console.log(children);
+  console.log(props);
   const [menuActive, setMenuActive] = useState(false);
 
   useEffect(() => {
@@ -37,7 +38,7 @@ const Menu = (props) => {
         onClick={toggleMenu}
       >
         <div className={styles.menu_icon}>
-          <RoundBtn className={styles.icon} icon={icon} />
+          <RoundBtn icon={icon} />
         </div>
         <div className={styles.submenu}>{children}</div>
       </div>

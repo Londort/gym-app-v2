@@ -28,6 +28,27 @@
     top: 150%;
     right: -50%;
     transition: all 0.3s ease-out;
+    .submenu_item {
+      position: relative;
+
+      .tooltip {
+        position: absolute;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        top: 30%;
+        right: 120%;
+        font-size: 0.7rem;
+        text-wrap: nowrap;
+        /* opacity: 0; */
+        color: var(--dark);
+        font-weight: bold;
+        pointer-events: none;
+        text-transform: uppercase;
+        transition: all 0.2s ease;
+      }
+    }
     & div {
       opacity: 0;
       z-index: 0;
@@ -36,6 +57,9 @@
         translate: rotate(0deg);
         transition: all 0.3s ease-out;
       }
+    }
+    .test {
+      opacity: 1;
     }
   }
 }
@@ -59,6 +83,14 @@
   .submenu {
     right: 50%;
     z-index: 5;
+
+    .submenu_item {
+      .tooltip {
+        right: 120%;
+        /* opacity: 1; */
+      }
+    }
+
     div {
       opacity: 1;
       z-index: 5;

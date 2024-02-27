@@ -28,6 +28,7 @@
     text-wrap: nowrap;
     color: var(--dark);
     font-weight: bold;
+    pointer-events: none;
     text-transform: uppercase;
   }
 }

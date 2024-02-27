@@ -20,7 +20,7 @@ const WorkoutList = (props) => {
       <Menu icon={<IoEllipsisHorizontalCircle />}>
         <RoundBtn
           icon={<IoAddCircleOutline onClick={addWorkout} />}
-          tooltip="add new"
+          tooltip="add workout"
         />
         <Link to="displayQR">
           <RoundBtn icon={<RiQrCodeLine />} tooltip="display QR" />
@@ -47,10 +47,8 @@ const WorkoutList = (props) => {
           to={`/workout${workout.name}`}
           className={styles.item}
         >
-          <div>
-            <FaDumbbell />
-            <span>Workout {workout.name}</span>
-          </div>
+          <FaDumbbell />
+          <span>Workout {workout.name}</span>
         </Link>
       ))}
     </section>
