@@ -28,9 +28,12 @@ function App() {
 
   const deleteWorkout = (id) => {
     const updateWorkouts = workouts.filter((workout) => workout.id !== id);
+    updateWorkouts.map((workout, index) => {
+      workout.name = index + 1;
+      return workout;
+    });
     LocalStorage.updateWorkouts(updateWorkouts);
     setWorkouts(updateWorkouts);
-    // window.location.href = '/';
   };
 
   const updateWorkout = (workout) => {
