@@ -47,7 +47,7 @@ const Exercise = ({ data, deleteExercise, EditExercise }) => {
             <div className={styles.header_icon}>
               <FaRunning />
             </div>
-            <span className={styles.header_title}>{data.title}</span>
+            <span className={styles.header_title}>{data.title || 'title'}</span>
           </div>
 
           {/* exercise body part */}
@@ -91,7 +91,7 @@ const Exercise = ({ data, deleteExercise, EditExercise }) => {
 
             {/* body detailes list */}
             <ul>
-              <li>Time: {data.time}min</li>
+              <li>Time: {data.time || '0'}min</li>
               <li>Level: {data.lvl || '0'}</li>
             </ul>
           </div>
@@ -105,7 +105,7 @@ const Exercise = ({ data, deleteExercise, EditExercise }) => {
             <div className={styles.header_icon}>
               <FaDumbbell />
             </div>
-            <span className={styles.header_title}>{data.title}</span>
+            <span className={styles.header_title}>{data.title || 'title'}</span>
           </div>
 
           <div
@@ -141,8 +141,8 @@ const Exercise = ({ data, deleteExercise, EditExercise }) => {
             </div>
 
             <ul>
-              <li>Sets: {data.sets}</li>
-              <li>Reps: {data.reps}</li>
+              <li>Sets: {data.sets || '0'}</li>
+              <li>Reps: {data.reps || '0'}</li>
               <li>Weight: {data.weight || '0'}kg</li>
             </ul>
           </div>
@@ -156,7 +156,7 @@ const Exercise = ({ data, deleteExercise, EditExercise }) => {
             <div className={styles.header_icon}>
               <GrYoga />
             </div>
-            <span className={styles.header_title}>{data.title}</span>
+            <span className={styles.header_title}>{data.title || 'title'}</span>
           </div>
 
           <div
@@ -192,7 +192,7 @@ const Exercise = ({ data, deleteExercise, EditExercise }) => {
             </div>
 
             <ul>
-              <li>Time: {data.time}min</li>
+              <li>Time: {data.time || '0'}min</li>
             </ul>
           </div>
         </div>
