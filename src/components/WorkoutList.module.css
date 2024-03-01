@@ -8,41 +8,38 @@
   align-items: center;
   justify-content: flex-start;
   background-color: var(--light);
-
-  .empty {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .item {
-    margin: 1rem 0;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    width: 50%;
-    padding: 2rem;
-    border-radius: 20px;
-    background-color: var(--dark);
-    color: var(--light);
-    position: relative;
-    &::before {
-      content: '';
-      position: absolute;
-      top: 5px;
-      right: 5px;
-      bottom: 5px;
-      left: 5px;
-      border-radius: 15px;
-      border: 2px solid var(--extra1);
-    }
-
-    span {
-      color: var(--extra1);
-    }
-  }
+}
+.container .empty {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.container .item {
+  margin: 1rem 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 50%;
+  padding: 2rem;
+  border-radius: 20px;
+  background-color: var(--dark);
+  color: var(--light);
+  position: relative;
+}
+.container .item span {
+  color: var(--extra1);
+}
+.container .item::before {
+  content: '';
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  bottom: 5px;
+  left: 5px;
+  border-radius: 15px;
+  border: 2px solid var(--extra1);
 }

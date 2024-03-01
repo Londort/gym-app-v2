@@ -1,6 +1,7 @@
 @import '../var.css';
 
 .btn {
+  position: relative;
   background-color: var(--dark);
   color: var(--extra1);
   border-radius: 50%;
@@ -9,26 +10,28 @@
   padding: calc(var(--padding) * 1);
   width: var(--width);
   height: var(--width);
-  position: relative;
-  svg {
-    display: grid;
-    place-items: center;
-    width: 100%;
-    height: 100%;
-  }
-  .tooltip {
-    position: absolute;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    top: 30%;
-    right: 120%;
-    font-size: 0.7rem;
-    text-wrap: nowrap;
-    color: var(--dark);
-    font-weight: bold;
-    pointer-events: none;
-    text-transform: uppercase;
-  }
+}
+.btn svg {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+}
+.btn .tooltip {
+  position: absolute;
+  width: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  top: 50%;
+  right: 120%;
+  font-size: 0.7rem;
+  line-height: 1rem;
+  white-space: nowrap;
+  color: var(--dark);
+  font-weight: bold;
+  pointer-events: none;
+  text-transform: uppercase;
+  transform: translateY(-50%);
 }

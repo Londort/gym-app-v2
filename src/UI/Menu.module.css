@@ -11,58 +11,57 @@
   transform: translateX(50%);
   transition: all 0.3s ease-out;
   z-index: 3;
-
-  .menu_icon {
-    position: absolute;
-    top: 0;
-    left: -50%;
-    z-index: 5;
-    transition: all 0.3s ease-out;
-  }
-
-  .submenu {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    top: 150%;
-    right: -50%;
-    transition: all 0.3s ease-out;
-    .submenu_item {
-      position: relative;
-
-      .tooltip {
-        position: absolute;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        top: 30%;
-        right: 120%;
-        font-size: 0.7rem;
-        text-wrap: nowrap;
-        /* opacity: 0; */
-        color: var(--dark);
-        font-weight: bold;
-        pointer-events: none;
-        text-transform: uppercase;
-        transition: all 0.2s ease;
-      }
-    }
-    & div {
-      opacity: 0;
-      z-index: 0;
-      transition: all 0.4s ease-out;
-      svg {
-        translate: rotate(0deg);
-        transition: all 0.3s ease-out;
-      }
-    }
-    .test {
-      opacity: 1;
-    }
-  }
 }
+.menu .menu_icon {
+  position: absolute;
+  top: 0;
+  left: -50%;
+  z-index: 5;
+  transition: all 0.3s ease-out;
+}
+.menu .submenu {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  top: 150%;
+  right: -50%;
+  transition: all 0.3s ease-out;
+}
+
+.menu .submenu .test {
+  opacity: 1;
+}
+
+.menu .submenu div {
+  opacity: 0;
+  z-index: 0;
+  transition: all 0.4s ease-out;
+}
+.menu .submenu div svg {
+  translate: rotate(0deg);
+  transition: all 0.3s ease-out;
+}
+.menu .submenu .submenu_item {
+  position: relative;
+}
+.menu .submenu .submenu_item .tooltip {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  top: 30%;
+  right: 120%;
+  font-size: 0.7rem;
+  text-wrap: nowrap;
+  color: var(--dark);
+  font-weight: bold;
+  pointer-events: none;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+}
+
 .menu_wrapper {
   position: fixed;
   top: 0;
@@ -77,30 +76,31 @@
 
 .menu.open {
   transform: translateX(0%);
-  .menu_icon {
-    transform: rotate(270deg);
-  }
-  .submenu {
-    right: 50%;
-    z-index: 5;
+}
 
-    .submenu_item {
-      .tooltip {
-        right: 120%;
-        /* opacity: 1; */
-      }
-    }
+.menu.open .menu_icon {
+  transform: rotate(270deg);
+}
 
-    div {
-      opacity: 1;
-      z-index: 5;
-      svg {
-        transform: rotate(360deg);
-      }
-    }
-  }
-  & + .menu_wrapper {
-    width: 100%;
-    opacity: 0.85;
-  }
+.menu.open .submenu {
+  right: 50%;
+  z-index: 5;
+}
+
+.menu.open .submenu div {
+  opacity: 1;
+  z-index: 5;
+}
+
+.menu.open .submenu div svg {
+  transform: rotate(360deg);
+}
+
+.menu.open .submenu .submenu_item .tooltip {
+  right: 120%;
+}
+
+.menu.open + .menu_wrapper {
+  width: 100%;
+  opacity: 0.85;
 }

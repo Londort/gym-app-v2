@@ -14,77 +14,75 @@
   gap: 1rem;
   opacity: 1;
   z-index: 5;
-
-  .form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 2rem;
-    background-color: var(--dark);
-    border: 1px solid var(--dark);
-    border-radius: 20px;
-    position: relative;
-
-    &::after {
-      content: '';
-      position: absolute;
-      top: 5px;
-      right: 5px;
-      bottom: 5px;
-      left: 5px;
-      border-radius: 15px;
-      border: 2px solid var(--extra1);
-    }
-
-    .exerciseType {
-      position: absolute;
-      top: calc(var(--width) * -0.5);
-      transform: translateX(-50%);
-      left: 50%;
-      box-shadow: var(--box-shadow);
-      border-radius: 50%;
-      background-color: var(--dark);
-      color: var(--extra1);
-      z-index: 1;
-      padding: var(--padding);
-    }
-
-    input {
-      background-color: transparent;
-      border: none;
-      border-bottom: 1px solid var(--extra1);
-      padding: 0.5rem;
-      color: var(--light);
-      position: relative;
-      z-index: 1;
-    }
-    .form_extra {
-      margin-top: 3rem;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      flex-wrap: nowrap;
-      align-items: flex-start;
-      gap: 1rem;
-      div {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 0.5rem;
-        color: var(--light);
-        input {
-          width: 2rem;
-        }
-      }
-    }
-    .form_footer {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-    }
-  }
 }
+
+.container .form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 2rem;
+  background-color: var(--dark);
+  border: 1px solid var(--dark);
+  border-radius: 20px;
+  position: relative;
+}
+.container .form::after {
+  content: '';
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  bottom: 5px;
+  left: 5px;
+  border-radius: 15px;
+  border: 2px solid var(--extra1);
+}
+.container .form .exerciseType {
+  position: absolute;
+  top: calc(var(--width) * -0.5);
+  transform: translateX(-50%);
+  left: 50%;
+  box-shadow: var(--box-shadow);
+  border-radius: 50%;
+  background-color: var(--dark);
+  color: var(--extra1);
+  z-index: 1;
+  padding: var(--padding);
+}
+.container .form input {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid var(--extra1);
+  padding: 0.5rem;
+  color: var(--light);
+  position: relative;
+  z-index: 1;
+}
+.container .form .form_extra {
+  margin-top: 3rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  gap: 1rem;
+}
+.container .form .form_extra div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--light);
+}
+.container .form .form_extra div input {
+  width: 2rem;
+}
+.container .form .form_footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 .btn {
   position: fixed;
   top: var(--height);
@@ -99,25 +97,25 @@
   opacity: 1;
   box-shadow: var(--box-shadow);
   z-index: 2;
-  .btn_icon {
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform: translateY(-50%);
-    transform: translateX(-50%);
-    width: var(--width);
-    height: var(--height);
-    background-color: var(--dark);
-    color: var(--extra1);
-    border-radius: 50%;
-    padding: var(--padding);
-    transition: all 0.2s ease-out;
-    box-shadow: var(--box-shadow);
-    .icon {
-      width: 100%;
-      height: 100%;
-      transition: all 0.2s ease-out;
-      transform: rotate(45deg);
-    }
-  }
+}
+.btn .btn_icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateY(-50%);
+  transform: translateX(-50%);
+  width: var(--width);
+  height: var(--height);
+  background-color: var(--dark);
+  color: var(--extra1);
+  border-radius: 50%;
+  padding: var(--padding);
+  transition: all 0.2s ease-out;
+  box-shadow: var(--box-shadow);
+}
+.btn .btn_icon .icon {
+  width: 100%;
+  height: 100%;
+  transition: all 0.2s ease-out;
+  transform: rotate(45deg);
 }

@@ -23,10 +23,10 @@ const WorkoutList = (props) => {
           tooltip="add workout"
         />
         <Link to="displayQR">
-          <RoundBtn icon={<RiQrCodeLine />} tooltip="display QR" />
+          <RoundBtn icon={<RiQrCodeLine />} tooltip="display qr" />
         </Link>
         <Link to="scanQR">
-          <RoundBtn icon={<RiQrScan2Line />} tooltip="scan QR" />
+          <RoundBtn icon={<RiQrScan2Line />} tooltip="scan qr" />
         </Link>
         <RoundBtn icon={<HiOutlineInformationCircle />} tooltip="info" />
       </Menu>

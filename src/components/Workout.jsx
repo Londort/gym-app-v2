@@ -19,8 +19,6 @@ import RoundBtn from '../UI/RoundBtn';
 
 const Workout = (props) => {
   const { workout, updateWorkout, deleteWorkout } = props;
-  console.log(workout.exercises.length);
-
   const [isMenuActive, setIsMenuActive] = useState(false);
   const [isExercisePopup, setIsExercisePopup] = useState(false);
   const [selectedType, setSelectedType] = useState(null);

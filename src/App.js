@@ -70,8 +70,8 @@ function App() {
               }
             />
           ))}
-          <Route path="displayQR" element={<DisplayQR />} />
-          <Route path="scanQR" element={<ScanQR />} />
+          <Route path="/displayQR" element={<DisplayQR />} />
+          <Route path="/scanQR" element={<ScanQR />} />
 
           {/* <Route path="/workout/:name" element={<Workout />} /> */}
         </Routes>

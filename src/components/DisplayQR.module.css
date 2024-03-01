@@ -8,14 +8,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  .body {
-    padding: 1rem;
-    border: 2px solid var(--extra1);
-    border-radius: 20px;
-    canvas {
-      width: 200px;
-      height: 200px;
-      color: var(--extra1);
-    }
-  }
+}
+.body {
+  padding: 1rem;
+  border: 2px solid var(--extra1);
+  border-radius: 20px;
 }

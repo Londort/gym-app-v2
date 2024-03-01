@@ -8,7 +8,6 @@ import { useEffect, useState } from 'react';
 
 const DisplayQR = () => {
   const [qrData, setQRData] = useState({});
-  console.log(qrData);
 
   useEffect(() => {
     const workouts = LocalStorage.getWorkouts();
@@ -19,7 +18,7 @@ const DisplayQR = () => {
   return (
     <div className={styles.container}>
       <div className={styles.body}>
-        <QRCode value={JSON.stringify(qrData)} renderAs="svg" size={175} />
+        <QRCode value={JSON.stringify(qrData)} renderAs="canvas" size={200} />
       </div>
       <Link to="/">
         <Menu icon={<IoArrowUndoCircleOutline />}></Menu>
